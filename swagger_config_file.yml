@@ -1,0 +1,17 @@
+swagger: '2.0'
+tags:
+  - name: Test API Swagger
+get:
+  description: None
+responses:
+    '200':
+      description: Successful response
+    '400':
+      description: Bad Request
+    '500':
+      description: Internal Server Error
+parameters:
+  - name: file
+    in: formData
+    type: file
+    required: false
