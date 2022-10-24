@@ -2,7 +2,6 @@ from flask import Flask, request, jsonify
 import re
 import pandas as pd
 from unidecode import unidecode
-import re
 import sqlite3
 import time
 from flasgger import Swagger, LazyString, LazyJSONEncoder, swag_from
@@ -16,7 +15,7 @@ swagger_template = dict(
 info = {
     'title': LazyString(lambda: 'Binar Gold Challenge'),
     'version': LazyString(lambda: '1'),
-    'description': LazyString(lambda: 'API CLEANSING'),
+    'description': LazyString(lambda: 'API CLEANSING TEXT'),
     },
     host = LazyString(lambda: request.host)
 )
@@ -41,11 +40,6 @@ swagger = Swagger(app, template=swagger_template,
 
 def _remove_punct(s):
     return re.sub(r"[^\w\d\s]+", "",s)
-
-def remove_ascii(s):
-    s=s.encode().decode('unidecode_escape')
-    s=bytes(s,'latin').decode('utf-8')
-    return s
 
 
 def remove_ascii2(s):
